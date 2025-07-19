@@ -2,61 +2,61 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="./css/style.css" rel="stylesheet">
-    <script src="https://d3js.org/d3.v6.min.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Visualization Dashboard</title>
+  <link rel="stylesheet" href="./css/style.css" />
+  <script src="https://d3js.org/d3.v6.min.js"></script>
 </head>
 
 <body>
-    <header class="dashboard-header">
-        <h1>Data Visualization Dashboard</h1>
-        <h2>Key Assignment 2</h2>
-        <nav>
-            <a href="https://scatterplot.lakerie.store/">Scatter Plot</a>
-            <a href="https://histogram.lakerie.store/">Histogram</a>
-            <a href="https://piechart.lakerie.store/">Pie Chart</a>
-            <a href="https://barplot.lakerie.store/">Stacked Bar Chart</a>
-        </nav>
-    </header>
+  <!-- Header -->
+  <header class="dashboard-header">
+    <h1>Data Visualization Dashboard</h1>
+    <h2>Key Assignment 2</h2>
+    <nav>
+      <a href="./scatter.html">Scatter Plot</a>
+      <a href="./histogram.html">Histogram</a>
+      <a href="./piechart.html">Pie Chart</a>
+      <a href="./stackedbar.html">Stacked Bar Chart</a>
+    </nav>
+  </header>
 
-    <main class="dashboard-grid">
-        <section id="scatterplot" class="card">
-            <h2>Sleep Health & Lifestyle</h2>
-            <h3>Scatter Plot: Stress Level vs Physical Activity Level</h3>
-            <div class="chart-area"></div>
-            <hr class="section-divider"> <!-- Divider between sections -->
-        </section>
+  <!-- Main Grid Preview -->
+  <main class="dashboard-grid">
+    <!-- Scatter Plot Preview -->
+    <section class="card">
+      <h2>Sleep Health & Lifestyle</h2>
+      <h3>Scatter Plot: Stress Level vs Physical Activity</h3>
+      <p><a href="./scatter.html">View Full Chart →</a></p>
+    </section>
 
-        <section id="histogram" class="card">
-            <h2>Sleep Health & Lifestyle</h2>
-            <h3>Histogram: Sleep Duration by Gender</h3>
-            <div class="chart-area"></div>
-            <hr class="section-divider"> <!-- Divider between sections -->
-        </section>
+    <!-- Histogram Preview -->
+    <section class="card">
+      <h2>Sleep Health & Lifestyle</h2>
+      <h3>Histogram: Sleep Duration by Gender</h3>
+      <p><a href="./histogram.html">View Full Chart →</a></p>
+    </section>
 
-        <section id="piechart" class="card">
-            <h2>Social Media Analytics</h2>
-            <h3>Interactive Pie Chart / Donut Chart</h3>
-            <h3>This chart visualizes post distribution across various fields</h3>
-            <div class="chart-area"></div>
-            <hr class="section-divider"> <!-- Divider between sections -->
-        </section>
+    <!-- Pie Chart Preview -->
+    <section class="card">
+      <h2>Social Media Analytics</h2>
+      <h3>Pie Chart: Post Distribution by Field</h3>
+      <p><a href="./piechart.html">View Full Chart →</a></p>
+    </section>
 
-        <section id="stackedbar" class="card">
-            <h2>Black Friday Data Visualization</h2>
-            <h3>Stacked Bar Chart</h3>
-            <div class="chart-area"></div>
-        </section>
-    </main>
+    <!-- Stacked Bar Preview -->
+    <section class="card">
+      <h2>Black Friday Dataset</h2>
+      <h3>Stacked Bar: Total Purchase by Age & Gender</h3>
+      <p><a href="./stackedbar.html">View Full Chart →</a></p>
+    </section>
+  </main>
 
-    <footer class="dashboard-footer">
-        <p>Dashboard designed by Abu Saleh</p>
-    </footer>
-
-    <script type="module" src="./js/scatterplot.js"></script>
-    <script type="module" src="./js/histogram.js"></script>
-    <script type="module" src="./js/piechart.js"></script>
-    <script type="module" src="./js/stacked_bar_chart.js"></script>
+  <!-- Footer -->
+  <footer class="dashboard-footer">
+    <p>Dashboard designed by Abu Saleh</p>
+  </footer>
 </body>
+
 </html>
