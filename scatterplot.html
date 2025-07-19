@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scatterplot: Stress vs Activity</title>
+  <link rel="stylesheet" href="./css/style.css" />
+  <script src="https://d3js.org/d3.v6.min.js"></script>
+  <script type="module" src="./js/script.js" defer></script>
+</head>
+
+<body>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <ul class="nav-list">
+      <li><a href="http://dashboard.lakerie.store/">Home</a></li>
+      <li><a href="https://histogram.lakerie.store/">Histogram</a></li>
+      <li><a href="http://piechart.lakerie.store/">Pie Chart</a></li>
+      <li><a href="https://barplot.lakerie.store/">Stacked Bar Chart</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <header class="page-header">
+      <h1>Sleep Health & Lifestyle</h1>
+      <h2>Scatterplot: Stress Level vs Physical Activity Level</h2>
+      <p>Visualizing stress and activity patterns colored by gender.</p>
+    </header>
+
+    <div class="controls">
+      <label for="genderFilter">Filter by Gender:</label>
+      <select id="genderFilter">
+        <option value="All">All</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select>
+    </div>
+
+    <div id="chart-area">
+      <div id="legend"></div>
+      <div id="chart"></div>
+    </div>
+  </main>
+</body>
+</html>
