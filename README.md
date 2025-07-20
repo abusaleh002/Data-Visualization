@@ -50,7 +50,7 @@ Data-Visualization/
 ## 🚀 How to Use
 
 1. **Visit the Live Site:**  
-   [https://abusaleh002.github.io/Data-Visualization-Black-Friday/)
+   [(https://abusaleh002.github.io/Data-Visualization/)]
 
 2. **Navigate** through the dashboard and individual chart pages using the top menu.
 
