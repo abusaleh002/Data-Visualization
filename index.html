@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Data Visualization Dashboard</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="./css/style.css" rel="stylesheet" />
 </head>
+
 <body>
-  <header>
+  <header class="dashboard-header">
     <h1>Data Visualization Dashboard</h1>
     <h2>Key Assignment 2</h2>
     <nav>
@@ -18,38 +19,45 @@
     </nav>
   </header>
 
-  <main class="grid-container">
-    <!-- Scatter Plot -->
-    <section class="card">
-      <h3>Sleep Health & Lifestyle</h3>
-      <p><strong>Scatter Plot:</strong> Stress Level vs Physical Activity</p>
-      <a href="scatterplot.html">View Full Chart →</a>
+  <main class="dashboard-grid">
+    <section id="scatterplot" class="card">
+      <h2>Sleep Health & Lifestyle</h2>
+      <h3>Scatter Plot: Stress Level vs Physical Activity Level</h3>
+      <div class="chart-area"></div>
+      <hr class="section-divider" />
     </section>
 
-    <!-- Histogram -->
-    <section class="card">
-      <h3>Sleep Health & Lifestyle</h3>
-      <p><strong>Histogram:</strong> Sleep Duration by Gender</p>
-      <a href="Histogram.html">View Full Chart →</a>
+    <section id="histogram" class="card">
+      <h2>Sleep Health & Lifestyle</h2>
+      <h3>Histogram: Sleep Duration by Gender</h3>
+      <div class="chart-area"></div>
+      <hr class="section-divider" />
     </section>
 
-    <!-- Pie Chart -->
-    <section class="card">
-      <h3>Social Media Analytics</h3>
-      <p><strong>Pie Chart:</strong> Post Distribution by Field</p>
-      <a href="Pie_Chart.html">View Full Chart →</a>
+    <section id="piechart" class="card">
+      <h2>Social Media Analytics</h2>
+      <h3>Interactive Pie Chart / Donut Chart</h3>
+      <h3>This chart visualizes post distribution across various fields</h3>
+      <div class="chart-area"></div>
+      <hr class="section-divider" />
     </section>
 
-    <!-- Stacked Bar -->
-    <section class="card">
-      <h3>Black Friday Dataset</h3>
-      <p><strong>Stacked Bar:</strong> Total Purchase by Age & Gender</p>
-      <a href="Stacked_Bar_Chart.html">View Full Chart →</a>
+    <section id="stackedbar" class="card">
+      <h2>Black Friday Data Visualization</h2>
+      <h3>Stacked Bar Chart</h3>
+      <div class="chart-area"></div>
     </section>
   </main>
 
-  <footer>
+  <footer class="dashboard-footer">
     <p>Dashboard designed by Abu Saleh</p>
   </footer>
+
+  <!-- Optional: Include only if you want the charts on homepage too -->
+  <script type="module" src="./js/scatterplot.js"></script>
+  <script type="module" src="./js/histogram.js"></script>
+  <script type="module" src="./js/piechart.js"></script>
+  <script type="module" src="./js/stacked_bar_chart.js"></script>
 </body>
+
 </html>
