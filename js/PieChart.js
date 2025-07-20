@@ -6,15 +6,18 @@ const radius = Math.min(width, height) / 2 - 30;
 
 async function drawPieChart(field = 'Platform', donut = false) {
     const data = await d3.json('./data/SpentSocialMedia.json');
+    if (!data || data.length === 0) return;
 
+    // Count values for selected field
     const counts = {};
     data.forEach(d => {
         counts[d[field]] = (counts[d[field]] || 0) + 1;
     });
 
-    const pieData = d3.pie().value(d => d.value)(
-        Object.entries(counts).map(([key, value]) => ({ key, value }))
-    );
+    const processedData = Object.entries(counts).map(([key, value]) => ({ key, value }));
+    const total = d3.sum(processedData, d => d.value);
+
+    const pieData = d3.pie().value(d => d.value)(processedData);
 
     const color = d3.scaleOrdinal(d3.schemeTableau10);
 
@@ -24,7 +27,6 @@ async function drawPieChart(field = 'Platform', donut = false) {
         .attr('height', height)
         .style('max-width', '100%');
 
-    // ✅ Centered pie chart
     const chartGroup = svg.append('g')
         .attr('transform', `translate(${width / 2 - 100}, ${height / 2})`);
 
@@ -32,6 +34,7 @@ async function drawPieChart(field = 'Platform', donut = false) {
         .innerRadius(donut ? radius * 0.6 : 0)
         .outerRadius(radius);
 
+    // Draw slices
     chartGroup.selectAll('path')
         .data(pieData)
         .enter()
@@ -41,6 +44,7 @@ async function drawPieChart(field = 'Platform', donut = false) {
         .attr('stroke', 'white')
         .style('stroke-width', '2px');
 
+    // Labels on slices
     chartGroup.selectAll('text')
         .data(pieData)
         .enter()
@@ -49,34 +53,32 @@ async function drawPieChart(field = 'Platform', donut = false) {
         .attr('text-anchor', 'middle')
         .style('fill', 'white')
         .style('font-size', '12px')
-        .text(d =>
-            `${d.data.key} (${((d.data.value / d3.sum(pieData, d => d.data.value)) * 100).toFixed(1)}%)`
-        );
+        .text(d => `${d.data.key} (${((d.data.value / total) * 100).toFixed(1)}%)`);
 
-    // ✅ Legend moved to bottom-left
+    // Draw legend
     const legend = svg.append('g')
-        .attr('transform', `translate(30, ${height - (Object.keys(counts).length * 25 + 20)})`);
+        .attr('transform', `translate(30, ${height - (processedData.length * 25 + 20)})`);
 
-    Object.entries(counts).forEach(([key, value], i) => {
-        const row = legend.append('g')
-            .attr('transform', `translate(0, ${i * 25})`);
+    processedData.forEach((d, i) => {
+        const row = legend.append('g').attr('transform', `translate(0, ${i * 25})`);
 
         row.append('rect')
             .attr('width', 15)
             .attr('height', 15)
-            .attr('fill', color(key));
+            .attr('fill', color(d.key));
 
         row.append('text')
             .attr('x', 20)
             .attr('y', 12)
             .style('font-size', '14px')
-            .text(`${key}: ${value}`);
+            .text(`${d.key}: ${d.value}`);
     });
 }
 
 function setupControls() {
     const container = d3.select('#piechart')
         .insert('div', ':first-child')
+        .attr('class', 'filter-container')
         .style('margin-bottom', '15px');
 
     container.append('label').text('Choose a field: ');
@@ -84,7 +86,11 @@ function setupControls() {
     const fields = ['Platform', 'Content_Type', 'Region'];
     const dropdown = container.append('select');
 
-    dropdown.selectAll('option').data(fields).enter().append('option').text(d => d);
+    dropdown.selectAll('option')
+        .data(fields)
+        .enter()
+        .append('option')
+        .text(d => d);
 
     container.append('label')
         .style('margin-left', '20px')
