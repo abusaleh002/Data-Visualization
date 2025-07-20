@@ -1,4 +1,4 @@
-import * as d3 from 'd3';
+import * as d3 from './d3.v6.min.js';
 
 const width = 600, height = 400;
 const margin = { top: 30, right: 130, bottom: 60, left: 60 };
