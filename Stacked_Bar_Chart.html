@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Stacked Bar Chart: Total Purchase by Age & Gender</title>
   <link href="./css/style.css" rel="stylesheet" />
-  <script src="https://d3js.org/d3.v6.min.js"></script>
 </head>
 <body>
   <header class="dashboard-header">
@@ -27,6 +26,9 @@
     <p>Chart by Abu Saleh</p>
   </footer>
 
-  <script type="module" src="./js/stacked_bar_chart.js"></script>
+  <!-- ✅ Load D3 first -->
+  <script src="./js/d3.v6.min.js"></script>
+  <!-- ✅ Then load the actual chart file -->
+  <script src="./js/Stacked_Bar_Chart.js"></script>
 </body>
 </html>
