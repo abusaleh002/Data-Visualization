@@ -1,46 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Scatterplot: Stress vs Activity</title>
-  <link rel="stylesheet" href="./css/style.css" />
-  <script src="https://d3js.org/d3.v6.min.js"></script>
-  <script type="module" src="./js/scatterplot.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scatter Plot | Stress vs Activity</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://d3js.org/d3.v6.min.js"></script>
 </head>
-
 <body>
-
-  <!-- Navigation Bar -->
-  <nav>
-    <ul class="nav-list">
-      <li><a href="./index.html">Home</a></li>
-      <li><a href="./Histogram.html">Histogram</a></li>
-      <li><a href="./Pie_Chart.html">Pie Chart</a></li>
-      <li><a href="./Stacked_Bar_Chart.html">Stacked Bar Chart</a></li>
-    </ul>
-  </nav>
-
-  <main class="container">
-    <header class="page-header">
-      <h1>Sleep Health & Lifestyle</h1>
-      <h2>Scatterplot: Stress Level vs Physical Activity Level</h2>
-      <p>Visualizing stress and activity patterns colored by gender.</p>
+    <header class="dashboard-header">
+        <h1>Scatter Plot: Stress Level vs Physical Activity</h1>
+        <nav>
+            <a href="index.html">← Back to Dashboard</a>
+        </nav>
     </header>
 
-    <div class="controls">
-      <label for="genderFilter">Filter by Gender:</label>
-      <select id="genderFilter">
-        <option value="All">All</option>
-        <option value="Male">Male</option>
-        <option value="Female">Female</option>
-      </select>
-    </div>
+    <main class="dashboard-grid">
+        <section class="card">
+            <h2>Sleep Health & Lifestyle</h2>
+            <h3>Relationship between Stress and Activity</h3>
+            <div class="chart-area" id="scatterplot"></div>
+        </section>
+    </main>
 
-    <div id="chart-area">
-      <div id="legend"></div>
-      <div id="chart"></div>
-    </div>
-  </main>
+    <footer class="dashboard-footer">
+        <p>Dashboard designed by Abu Saleh</p>
+    </footer>
+
+    <script type="module" src="js/scatterplot.js"></script>
 </body>
 </html>
