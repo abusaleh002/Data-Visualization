@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Histogram: Sleep Duration by Gender</title>
-  <link href="./css/style.css" rel="stylesheet">
+  <link href="./css/style.css" rel="stylesheet" />
   <script src="https://d3js.org/d3.v6.min.js"></script>
 </head>
 <body>
@@ -12,14 +13,20 @@
     <h2>Histogram: Sleep Duration by Gender</h2>
     <nav>
       <a href="index.html">← Back to Dashboard</a>
+      <a href="scatterplot.html">Scatter Plot</a>
+      <a href="Pie_Chart.html">Pie Chart</a>
+      <a href="Stacked_Bar_Chart.html">Stacked Bar Chart</a>
     </nav>
   </header>
+
   <main class="chart-container">
-    <div class="chart-area"></div>
+    <div class="chart-area" id="histogram"></div>
   </main>
+
   <footer class="dashboard-footer">
     <p>Chart by Abu Saleh</p>
   </footer>
-  <script type="module" src="./js/Histogram.js"></script>
+
+  <script type="module" src="./js/histogram.js"></script>
 </body>
 </html>
