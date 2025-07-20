@@ -1,4 +1,3 @@
-import * as d3 from './d3.v6.min.js';
 
 // Assuming <script src="https://d3js.org/d3.v6.min.js"> is already loaded in HTML
 async function drawStackedBarChart() {
