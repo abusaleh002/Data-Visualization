@@ -1,32 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Scatter Plot | Stress vs Activity</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <script src="https://d3js.org/d3.v6.min.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scatter Plot | Stress vs Activity</title>
+  <link rel="stylesheet" href="./css/style.css" />
+  <script src="https://d3js.org/d3.v6.min.js"></script>
 </head>
 <body>
-    <header class="dashboard-header">
-        <h1>Scatter Plot: Stress Level vs Physical Activity</h1>
-        <nav>
-            <a href="index.html">← Back to Dashboard</a>
-        </nav>
-    </header>
+  <header class="dashboard-header">
+    <h1>Scatter Plot: Stress Level vs Physical Activity</h1>
+    <nav>
+      <a href="index.html">← Back to Dashboard</a>
+      <a href="Histogram.html">Histogram</a>
+      <a href="Pie_Chart.html">Pie Chart</a>
+      <a href="Stacked_Bar_Chart.html">Stacked Bar Chart</a>
+    </nav>
+  </header>
 
-    <main class="dashboard-grid">
-        <section class="card">
-            <h2>Sleep Health & Lifestyle</h2>
-            <h3>Relationship between Stress and Activity</h3>
-            <div class="chart-area" id="scatterplot"></div>
-        </section>
-    </main>
+  <main class="dashboard-grid">
+    <section class="card">
+      <h2>Sleep Health & Lifestyle</h2>
+      <h3>Relationship between Stress and Activity</h3>
+      <div class="chart-area" id="scatterplot"></div>
+    </section>
+  </main>
 
-    <footer class="dashboard-footer">
-        <p>Dashboard designed by Abu Saleh</p>
-    </footer>
+  <footer class="dashboard-footer">
+    <p>Dashboard designed by Abu Saleh</p>
+  </footer>
 
-    <script type="module" src="js/scatterplot.js"></script>
+  <script type="module" src="./js/scatterplot.js"></script>
 </body>
 </html>
