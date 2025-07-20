@@ -1,7 +1,9 @@
 import * as d3 from 'd3';
 
-const width = 600, height = 400, margin = {top: 30, right: 130, bottom: 60, left: 60};
+const width = 600, height = 400;
+const margin = { top: 30, right: 130, bottom: 60, left: 60 };
 
+// Draw Scatterplot
 async function drawScatterplot(selectedGender = 'All') {
     const data = await d3.json('./data/Sleep_health_and_lifestyle_dataset.json');
 
@@ -27,56 +29,60 @@ async function drawScatterplot(selectedGender = 'All') {
         .range([height - margin.bottom, margin.top]);
 
     svg.selectAll('circle')
-        .data(filteredData).enter().append('circle')
+        .data(filteredData)
+        .enter()
+        .append('circle')
         .attr('cx', d => x(+d.Age))
         .attr('cy', d => y(+d['Stress Level']))
         .attr('r', 7)
         .attr('fill', d => color(d.Gender))
-        .attr('opacity', 0.8);
+        .attr('opacity', 0.75);
 
+    // X Axis
     svg.append('g')
         .attr('transform', `translate(0,${height - margin.bottom})`)
         .call(d3.axisBottom(x));
 
+    // Y Axis
     svg.append('g')
         .attr('transform', `translate(${margin.left},0)`)
         .call(d3.axisLeft(y));
 
-    // X-axis Label (Age)
+    // X Label
     svg.append('text')
-        .attr('x', (width - margin.right) / 2)
-        .attr('y', height - 20)
+        .attr('x', width / 2)
+        .attr('y', height - 15)
         .attr('text-anchor', 'middle')
         .style('font-weight', 'bold')
         .text('Age');
 
-    // Y-axis Label (Stress Level)
+    // Y Label
     svg.append('text')
         .attr('transform', 'rotate(-90)')
-        .attr('x', -(height / 2))
+        .attr('x', -height / 2)
         .attr('y', 15)
         .attr('text-anchor', 'middle')
         .style('font-weight', 'bold')
         .text('Stress Level');
 
-    // Corrected Legend position on the right side
+    // Legend
     const legend = svg.append('g')
         .attr('transform', `translate(${width - margin.right + 20},${margin.top})`);
 
     ['Male', 'Female'].forEach((gender, i) => {
         const row = legend.append('g').attr('transform', `translate(0,${i * 20})`);
-
         row.append('rect')
-            .attr('width', 15).attr('height', 15)
+            .attr('width', 15)
+            .attr('height', 15)
             .attr('fill', color(gender));
-
         row.append('text')
-            .attr('x', 20).attr('y', 12)
+            .attr('x', 20)
+            .attr('y', 12)
             .text(gender);
     });
 }
 
-// Gender Dropdown
+// Setup Dropdown to Filter by Gender
 async function setupGenderDropdown() {
     const container = d3.select('#scatterplot')
         .insert('div', ':first-child')
@@ -88,13 +94,16 @@ async function setupGenderDropdown() {
     const dropdown = container.append('select');
 
     dropdown.selectAll('option')
-        .data(['All', 'Male', 'Female']).enter().append('option')
+        .data(['All', 'Male', 'Female'])
+        .enter()
+        .append('option')
         .text(d => d);
 
-    dropdown.on('change', function() {
+    dropdown.on('change', function () {
         drawScatterplot(this.value);
     });
 }
 
+// Initialize
 setupGenderDropdown();
 drawScatterplot();
