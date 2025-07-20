@@ -1,42 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
   <title>Histogram: Sleep Duration by Gender</title>
-  <link rel="stylesheet" href="./css/style.css" />
+  <link href="./css/style.css" rel="stylesheet">
   <script src="https://d3js.org/d3.v6.min.js"></script>
-  <script type="module" src="./js/Histogram.js"></script>
 </head>
 <body>
-  <!-- Navigation Bar -->
-  <nav>
-    <ul class="nav-list">
-      <li><a href="./index.html">Home</a></li>
-      <li><a href="./scatter.html">Scatter Plot</a></li>
-      <li><a href="./histogram.html">Histogram</a></li>
-      <li><a href="./piechart.html">Pie Chart</a></li>
-      <li><a href="./stackedbar.html">Stacked Bar Chart</a></li>
-    </ul>
-  </nav>
-
-  <main class="container">
-    <header class="page-header">
-      <h1>Sleep Health & Lifestyle</h1>
-      <h2>Histogram: Sleep Duration by Gender</h2>
-      <p>Grouped by gender with optional occupation filtering.</p>
-    </header>
-
-    <!-- Filter dropdown -->
-    <div class="controls">
-      <label for="filter">Filter by Occupation:</label>
-      <select id="filter">
-        <option value="All">All Occupations</option>
-      </select>
-    </div>
-
-    <!-- Chart container -->
-    <div id="chart"></div>
+  <header class="dashboard-header">
+    <h1>Sleep Health & Lifestyle</h1>
+    <h2>Histogram: Sleep Duration by Gender</h2>
+    <nav>
+      <a href="index.html">← Back to Dashboard</a>
+    </nav>
+  </header>
+  <main class="chart-container">
+    <div class="chart-area"></div>
   </main>
+  <footer class="dashboard-footer">
+    <p>Chart by Abu Saleh</p>
+  </footer>
+  <script type="module" src="./js/Histogram.js"></script>
 </body>
 </html>
