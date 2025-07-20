@@ -1,5 +1,4 @@
-import * as d3 from 'd3';
-
+import * as d3 from './d3.v6.min.js';
 const width = 900;
 const height = 400;
 const radius = Math.min(width, height) / 2 - 30;
