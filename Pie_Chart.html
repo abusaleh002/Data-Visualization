@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pie Chart: Post Distribution by Field</title>
-  <link href="./css/style.css" rel="stylesheet">
+  <link href="./css/style.css" rel="stylesheet" />
   <script src="https://d3js.org/d3.v6.min.js"></script>
 </head>
 <body>
@@ -12,14 +13,20 @@
     <h2>Pie Chart: Post Distribution by Field</h2>
     <nav>
       <a href="index.html">← Back to Dashboard</a>
+      <a href="scatterplot.html">Scatter Plot</a>
+      <a href="Histogram.html">Histogram</a>
+      <a href="Stacked_Bar_Chart.html">Stacked Bar Chart</a>
     </nav>
   </header>
+
   <main class="chart-container">
-    <div class="chart-area"></div>
+    <div class="chart-area" id="piechart"></div>
   </main>
+
   <footer class="dashboard-footer">
     <p>Chart by Abu Saleh</p>
   </footer>
-  <script type="module" src="./js/PieChart.js"></script>
+
+  <script type="module" src="./js/piechart.js"></script>
 </body>
 </html>
