@@ -1,6 +1,8 @@
 import * as d3 from 'd3';
 
-const width = 600, height = 400, margin = {top: 30, right: 30, bottom: 60, left: 60};
+const width = 600,
+      height = 400,
+      margin = { top: 30, right: 30, bottom: 60, left: 60 };
 
 async function drawGroupedHistogram(selectedOccupation = 'All Occupations') {
     const data = await d3.json('./data/Sleep_health_and_lifestyle_dataset.json');
@@ -13,16 +15,19 @@ async function drawGroupedHistogram(selectedOccupation = 'All Occupations') {
     const color = d3.scaleOrdinal().domain(genders).range(['#1f77b4', '#ff7f0e']);
 
     const binsGenerator = d3.histogram()
-        .domain([5.8, 8.6])
-        .thresholds(d3.range(6, 8.6, 0.2))
+        .domain([5.5, 9]) // Slightly extended to include edge data
+        .thresholds(d3.range(5.5, 9.1, 0.3)) // ~12 bins
         .value(d => +d['Sleep Duration']);
 
-    const binsByGender = genders.map(gender => {
-        return { gender, bins: binsGenerator(filteredData.filter(d => d.Gender === gender)) };
-    });
+    const binsByGender = genders.map(gender => ({
+        gender,
+        bins: binsGenerator(filteredData.filter(d => d.Gender === gender))
+    }));
+
+    const xLabels = binsByGender[0].bins.map(d => d.x0.toFixed(1));
 
     const x0 = d3.scaleBand()
-        .domain(binsByGender[0].bins.map(d => d.x0.toFixed(1)))
+        .domain(xLabels)
         .range([margin.left, width - margin.right])
         .paddingInner(0.1);
 
@@ -46,7 +51,7 @@ async function drawGroupedHistogram(selectedOccupation = 'All Occupations') {
         .attr('transform', d => `translate(${x0(d.x0.toFixed(1))},0)`);
 
     groups.selectAll('rect')
-        .data((d, i) => binsByGender.map(g => ({gender: g.gender, bin: g.bins[i]})))
+        .data((d, i) => binsByGender.map(g => ({ gender: g.gender, bin: g.bins[i] })))
         .enter().append('rect')
         .attr('x', d => x1(d.gender))
         .attr('y', d => y(d.bin.length))
@@ -54,6 +59,7 @@ async function drawGroupedHistogram(selectedOccupation = 'All Occupations') {
         .attr('height', d => y(0) - y(d.bin.length))
         .attr('fill', d => color(d.gender));
 
+    // X-axis
     svg.append('g')
         .attr('transform', `translate(0,${height - margin.bottom})`)
         .call(d3.axisBottom(x0))
@@ -65,6 +71,7 @@ async function drawGroupedHistogram(selectedOccupation = 'All Occupations') {
         .style('font-weight', 'bold')
         .text('Sleep Duration (hours)');
 
+    // Y-axis
     svg.append('g')
         .attr('transform', `translate(${margin.left},0)`)
         .call(d3.axisLeft(y))
@@ -77,6 +84,7 @@ async function drawGroupedHistogram(selectedOccupation = 'All Occupations') {
         .style('font-weight', 'bold')
         .text('Number of People');
 
+    // Legend
     const legend = svg.append('g')
         .attr('transform', `translate(${width - margin.right - 100},${margin.top})`);
 
@@ -108,7 +116,7 @@ async function setupOccupationDropdown() {
     dropdown.selectAll('option')
         .data(occupations).enter().append('option').text(d => d);
 
-    dropdown.on('change', function() {
+    dropdown.on('change', function () {
         drawGroupedHistogram(this.value);
     });
 }
